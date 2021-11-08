@@ -1,5 +1,4 @@
-const getLoading = state => state.posts.loading;
-
 const getAllPosts = state => state.posts.items;
+const getId = state => state.posts.items.id;
 
-export { getLoading, getAllPosts };
+export { getAllPosts, getId };

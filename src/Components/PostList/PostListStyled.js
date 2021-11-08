@@ -4,15 +4,26 @@ export const PostListItemStyled = styled.ul`
   display: flex;
   align-content: space-evenly;
   flex-wrap: wrap;
-  .Post__item {
+  .PostList__item {
+    
     list-style: none;
     padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+
+    
+
 
     &:hover {
       background-color: transparent;
       color: yellow;
       border: 2px solid yellow;
     }
+  }
     .PostsList__checkbox {
       cursor: pointer;
       width: 15px;
@@ -21,13 +32,14 @@ export const PostListItemStyled = styled.ul`
     }
 
     .PostsList__title {
+      padding-top: 15px;
       font-weight: bold;
       margin-top: 0;
       margin-bottom: 5px;
       text-align: center;
       margin-right: auto;
       margin-left: auto;
-      max-height: 70px;
+      max-height: 60px;
       overflow-x: hidden;
       word-wrap: break-word;
     }
@@ -38,9 +50,10 @@ export const PostListItemStyled = styled.ul`
       margin-right: auto;
       margin-left: auto;
       text-align: center;
-      max-height: 70px;
+      max-height: 40px;
       overflow-x: hidden;
       word-wrap: break-word;
+      
     }
 
     .PostsList__btn {

@@ -5,7 +5,7 @@ export const PostEditorStyled = styled.form`
   border-radius: 4px;
 
   .PostEditor__textarea {
-    width: 100%;
+    width: 94%;
 
     $line-height: 16px;
 

@@ -13,25 +13,7 @@ const PostsView = () => {
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
-  // window.onload = function () {
-  //   const allPostsBtnNode = document.querySelector('.allposts');
 
-  //   allPostsBtnNode.addEventListener('click', onAllPostsClick);
-  // };
-
-  // function onAllPostsClick(e) {
-  //   if (e.target.className === 'allposts') {
-  //     alert(1);
-  //     getAllPosts(allPosts);
-  //     return;
-  //   }
-  //   return alert(12);
-  // }
-
-  // function getAllPosts(allPosts) {
-  //   console.log(allPosts);
-  //   return allPosts;
-  // }
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = useCallback(() => {
@@ -50,7 +32,6 @@ const PostsView = () => {
           <PostEditor onSave={toggleModal} />
         </Modal>
       )}
-      <button className='allposts'>See all posts</button>
     </Container>
   );
 };

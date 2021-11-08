@@ -13,10 +13,10 @@ const IconButton = ({ children, onClick, ...allyProps }) => (
   </IconButtonStyled>
 );
 
-IconButton.defaultProps = {
-  onClick: () => null,
-  children: null
-};
+// IconButton.defaultProps = {
+//   onClick: () => null,
+//   children: null
+// };
 
 IconButton.propTypes = {
   onClick: PropTypes.func,

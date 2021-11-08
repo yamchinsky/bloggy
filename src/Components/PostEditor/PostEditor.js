@@ -22,7 +22,7 @@ export default function PostEditor({ onSave }) {
 
       dispatch(addPost(message));
       onSave();
-      setMessage('');
+      setMessage(message);
     },
     [dispatch, message, onSave]
   );
@@ -30,11 +30,11 @@ export default function PostEditor({ onSave }) {
   return (
     <PostEditorStyled onSubmit={handleSubmit}>
       <textarea
-        className='postEditor__textarea'
+        className='PostEditor__textarea'
         value={message}
         onChange={handleChange}
       ></textarea>
-      <button type='submit' className='postEditor__button'>
+      <button type='submit' className='PostEditor__button'>
         Сохранить
       </button>
     </PostEditorStyled>

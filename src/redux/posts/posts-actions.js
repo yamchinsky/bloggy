@@ -12,12 +12,6 @@ export const deletePostRequest = createAction('posts/deletePostRequest');
 export const deletePostSuccess = createAction('posts/deletePostsuccess');
 export const deletePostError = createAction('posts/deletePostError');
 
-export const toggleCompletedRequest = createAction(
-  'posts/toggleCompletedRequest'
-);
-export const toggleCompletedSuccess = createAction(
-  'posts/toggleCompletedSuccess'
-);
-export const toggleCompletedError = createAction('posts/toggleCompletedError');
-
-// export const changeFilter = createAction('posts/changeFilter');
+export const updatePostRequest = createAction('posts/updatePostRequest');
+export const updatePostSuccess = createAction('posts/updatePostSuccess');
+export const updatePostError = createAction('posts/updatePostError');

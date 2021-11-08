@@ -6,13 +6,14 @@ import {
   deletePostRequest,
   deletePostSuccess,
   deletePostError,
-  toggleCompletedRequest,
-  toggleCompletedSuccess,
-  toggleCompletedError,
+  updatePostRequest,
+  updatePostSuccess,
+  updatePostError,
   fetchPostsRequest,
   fetchPostsSuccess,
   fetchPostsError
 } from './posts-actions';
+import { getId } from './posts-selectors';
 
 axios.defaults.baseURL = 'https://bloggy-api.herokuapp.com/';
 
@@ -22,7 +23,7 @@ const fetchPosts = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/posts');
-    console.log(data);
+
     dispatch(fetchPostsSuccess(data));
   } catch (error) {
     dispatch(fetchPostsError(error.message));
@@ -33,11 +34,8 @@ const fetchPosts = () => async dispatch => {
 const addPost = title => async dispatch => {
   dispatch(addPostRequest());
   const post = {
-    title,
-
-    completed: false
+    title
   };
-  console.log(post);
 
   dispatch(addPostRequest());
 
@@ -48,27 +46,26 @@ const addPost = title => async dispatch => {
 };
 
 // DELETE @ /posts/:id
-const deletePost = postId => dispatch => {
+const deletePost = id => dispatch => {
   dispatch(deletePostRequest());
 
   axios
-    .delete(`/posts/${postId}`)
-    .then(() => dispatch(deletePostSuccess(postId)))
+    .delete(`/posts/${id}`)
+    .then(() => dispatch(deletePostSuccess(id)))
     .catch(error => dispatch(deletePostError(error.message)));
 };
 
-// PATCH @ /posts/:id
-const toggleCompleted =
-  ({ id, completed }) =>
-  dispatch => {
-    const update = { completed };
+// PUT @ /posts/:id
+const updatePost = values => async (dispatch, getState) => {
+  console.log(values);
+  dispatch(updatePostRequest());
+  try {
+    const id = getId(getState());
+    const res = await axios.put(`/posts/${id}`, values);
+    dispatch(updatePostSuccess(res.data));
+  } catch (error) {
+    dispatch(updatePostError(error.message));
+  }
+};
 
-    dispatch(toggleCompletedRequest());
-
-    axios
-      .patch(`/posts/${id}`, update)
-      .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
-      .catch(error => dispatch(toggleCompletedError(error.message)));
-  };
-
-export { fetchPosts, addPost, deletePost, toggleCompleted };
+export { fetchPosts, addPost, deletePost, updatePost };
