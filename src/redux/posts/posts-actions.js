@@ -15,3 +15,7 @@ export const deletePostError = createAction('posts/deletePostError');
 export const updatePostRequest = createAction('posts/updatePostRequest');
 export const updatePostSuccess = createAction('posts/updatePostSuccess');
 export const updatePostError = createAction('posts/updatePostError');
+
+export const retrievePostRequest = createAction('posts/retrievePostRequest');
+export const retrievePostSuccess = createAction('posts/retrievePostSuccess');
+export const retrievePostError = createAction('posts/retrievePostError');

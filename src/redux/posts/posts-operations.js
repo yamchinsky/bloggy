@@ -11,7 +11,9 @@ import {
   updatePostError,
   fetchPostsRequest,
   fetchPostsSuccess,
-  fetchPostsError
+  fetchPostsError,
+  retrievePostSuccess,
+  retrievePostError
 } from './posts-actions';
 import { getId } from './posts-selectors';
 
@@ -68,4 +70,15 @@ const updatePost = values => async (dispatch, getState) => {
   }
 };
 
-export { fetchPosts, addPost, deletePost, updatePost };
+// GET @ /posts/1?_embed=comments
+
+const retrievePost = id => async dispatch => {
+  try {
+    const res = await axios.get(`/posts/${id}`);
+    dispatch(retrievePostSuccess(res.data));
+  } catch (error) {
+    dispatch(retrievePostError(error.message));
+  }
+};
+
+export { fetchPosts, addPost, deletePost, updatePost, retrievePost };

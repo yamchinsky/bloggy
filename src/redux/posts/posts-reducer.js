@@ -4,7 +4,8 @@ import {
   addPostSuccess,
   deletePostSuccess,
   updatePostSuccess,
-  fetchPostsSuccess
+  fetchPostsSuccess,
+  retrievePostSuccess
 } from './posts-actions';
 
 const items = createReducer([], {
@@ -13,7 +14,8 @@ const items = createReducer([], {
   [deletePostSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [updatePostSuccess]: (state, { payload }) =>
-    state.map(post => (post.id === payload.id ? payload : post))
+    state.map(post => (post.id === payload.id ? payload : post)),
+  [retrievePostSuccess]: (_, { payload }) => [...payload]
 });
 
 // const error = createReducer(null, {});
